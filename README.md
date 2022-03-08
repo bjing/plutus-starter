@@ -1,8 +1,17 @@
 # Plutus Platform starter project
+
 ![CI](https://github.com/input-output-hk/plutus-starter/actions/workflows/test.yml/badge.svg?branch=main)
 
-
 This project gives a simple starter project for using the Plutus Platform.
+
+## Brian's Note
+
+I will try to keep this project template up-to-date with the release of [`plutus-apps`](https://github.com/input-output-hk/plutus-apps#non-ni://github.com/input-output-hk/plutus-apps#non-nix).
+
+I have not been able to build the [devcontainer docker image](https://hub.docker.com/r/inputoutput/plutus-starter-devcontainer) for the latest version of Plutus. If anyone's able to do this, please contribute to the [original `plutus-starter` project](https://github.com/input-output-hk/plutus-starter)!
+
+Therefore, for this project template to build, you'll need to enter a `nix-shell` from your `plutus-apps` repo checkout at commit hash: `13836ecf59649ca522471417b07fb095556eb981`.
+
 
 ## Setting up
 
