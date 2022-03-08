@@ -54,6 +54,7 @@ library
       plutus-tx-plugin,
       plutus-tx,
       plutus-ledger,
+      plutus-ledger-constraints,
     hs-source-dirs: src examples/src
 
 test-suite plutus-example-projects-test
