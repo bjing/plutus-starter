@@ -15,7 +15,6 @@
 {-# LANGUAGE TypeApplications           #-}
 {-# LANGUAGE TypeFamilies               #-}
 {-# LANGUAGE TypeOperators              #-}
-{-# LANGUAGE ViewPatterns               #-}
 
 
 -- | A guessing game
@@ -44,7 +43,8 @@ import qualified Data.ByteString.Char8 as C
 import           Data.Map              (Map)
 import qualified Data.Map              as Map
 import           Data.Maybe            (catMaybes)
-import           Ledger                (Address, Datum (Datum), ScriptContext, Validator, Value)
+import           Ledger                (Address, Datum (Datum), ScriptContext,
+                                        Validator, Value)
 import qualified Ledger
 import qualified Ledger.Ada            as Ada
 import qualified Ledger.Constraints    as Constraints
@@ -53,11 +53,12 @@ import qualified Ledger.Typed.Scripts  as Scripts
 import           Playground.Contract
 import           Plutus.Contract
 import           Plutus.Contract.Trace as X
+import           Plutus.Contract.Types ()
+import           Plutus.Trace.Emulator (EmulatorTrace)
+import qualified Plutus.Trace.Emulator as Trace
 import qualified PlutusTx
 import           PlutusTx.Prelude      hiding (pure, (<$>))
 import qualified Prelude               as Haskell
-import           Plutus.Trace.Emulator (EmulatorTrace)
-import qualified Plutus.Trace.Emulator as Trace
 
 newtype HashedString = HashedString BuiltinByteString deriving newtype (PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData)
 

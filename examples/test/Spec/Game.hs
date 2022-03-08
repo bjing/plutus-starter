@@ -1,26 +1,27 @@
 {-# LANGUAGE DataKinds          #-}
-{-# LANGUAGE TemplateHaskell    #-}
-{-# LANGUAGE TypeApplications   #-}
 {-# LANGUAGE NumericUnderscores #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE TemplateHaskell    #-}
+{-# LANGUAGE TypeApplications   #-}
 
 module Spec.Game
     ( tests
     ) where
 
 import           Control.Monad         (void)
-import           Ledger                (ValidationError(ScriptFailure))
+import           Ledger                (ValidationError (ScriptFailure))
 import qualified Ledger.Ada            as Ada
-import           Plutus.Contract       (Contract, ContractError(WalletError))
-import           Wallet.API            (WalletAPIError(ValidationError))
+import           Plutus.Contract       (Contract)
 import           Plutus.Contract.Test
+import           Plutus.Contract.Types (ContractError (WalletContractError))
 import           Plutus.Contracts.Game
 import           Plutus.Trace.Emulator (ContractInstanceTag)
 import qualified Plutus.Trace.Emulator as Trace
 import qualified PlutusTx
+import           Prelude
 import           Test.Tasty
 import qualified Test.Tasty.HUnit      as HUnit
-import Prelude
+import           Wallet.API            (WalletAPIError (ValidationError))
 
 t1, t2 :: ContractInstanceTag
 t1 = Trace.walletInstanceTag w1
@@ -72,5 +73,5 @@ tests = testGroup "game"
 
 appropriateError :: ContractError -> Bool
 appropriateError e = case e of
-    WalletError (ValidationError (ScriptFailure _)) -> True
-    _ -> False
+    WalletContractError (ValidationError (ScriptFailure _)) -> True
+    _                                                       -> False
