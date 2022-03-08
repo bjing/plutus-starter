@@ -14,21 +14,29 @@ module Main(main, writeCostingScripts) where
 import           Control.Monad                       (void)
 import           Control.Monad.Freer                 (interpret)
 import           Control.Monad.IO.Class              (MonadIO (..))
-import           Data.Aeson                          (FromJSON (..), ToJSON (..), genericToJSON, genericParseJSON
-                                                     , defaultOptions, Options(..))
+import           Data.Aeson                          (FromJSON (..),
+                                                      Options (..), ToJSON (..),
+                                                      defaultOptions,
+                                                      genericParseJSON,
+                                                      genericToJSON)
 import           Data.Default                        (def)
 import qualified Data.OpenApi                        as OpenApi
-import           Data.Text.Prettyprint.Doc           (Pretty (..), viaShow)
+--import           Data.Text.Prettyprint.Doc           (Pretty (..), viaShow)
 import           GHC.Generics                        (Generic)
+import           Ledger.Index                        (ValidatorMode (..))
 import           Plutus.Contract                     (ContractError)
-import           Plutus.PAB.Effects.Contract.Builtin (Builtin, SomeBuiltin (..), BuiltinHandler(contractHandler))
+import           Plutus.Contracts.Game               as Game
+import           Plutus.PAB.Effects.Contract.Builtin (Builtin,
+                                                      BuiltinHandler (contractHandler),
+                                                      SomeBuiltin (..))
 import qualified Plutus.PAB.Effects.Contract.Builtin as Builtin
 import           Plutus.PAB.Simulator                (SimulatorEffectHandlers)
 import qualified Plutus.PAB.Simulator                as Simulator
 import qualified Plutus.PAB.Webserver.Server         as PAB.Server
-import           Plutus.Contracts.Game               as Game
-import           Plutus.Trace.Emulator.Extract       (writeScriptsTo, ScriptsConfig (..), Command (..))
-import           Ledger.Index                        (ValidatorMode(..))
+import           Plutus.Trace.Emulator.Extract       (Command (..),
+                                                      ScriptsConfig (..),
+                                                      writeScriptsTo)
+import           Prettyprinter
 
 main :: IO ()
 main = void $ Simulator.runSimulationWith handlers $ do
