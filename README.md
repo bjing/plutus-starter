@@ -10,8 +10,9 @@ I will try to keep this project template up-to-date with the release of [`plutus
 
 I have not been able to build the [devcontainer docker image](https://hub.docker.com/r/inputoutput/plutus-starter-devcontainer) for the latest version of Plutus. If anyone's able to do this, please contribute to the [original `plutus-starter` project](https://github.com/input-output-hk/plutus-starter)!
 
-Therefore, for this project template to build, you'll need to enter a `nix-shell` from your `plutus-apps` repo checkout at commit hash: `13836ecf59649ca522471417b07fb095556eb981`.
-
+However, I've built a Docker image that contains the full plutus-apps Nix environment
+that you can use to build your Plutus dapps. Refer to
+[plutus-apps-container](https://github.com/bjing/plutus-apps-container) for details.
 
 ## Setting up
 
